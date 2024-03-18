@@ -8,7 +8,8 @@ const api = {
   item: 'https://api.hnpwa.com/v0/item/'
 };
 
-function fetchNews() {
+
+function fetchNewsList() {
   return axios.get(api.news);
 }
 
@@ -16,7 +17,7 @@ function fetchAsk() {
   return axios.get(api.ask);
 }
 
-function fetchJobs() {
+function fetchJobsList() {
   return axios.get(api.jobs);
 }
 
@@ -31,9 +32,9 @@ function fetchItem(id) {
 }
 
 export {
-  fetchNews,
+  fetchNewsList,
   fetchAsk,
-  fetchJobs,
+  fetchJobsList,
   fetchUser,
   fetchItem
 }

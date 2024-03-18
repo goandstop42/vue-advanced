@@ -17,7 +17,7 @@
     "@vue/cli-service": "^3.0.1",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17",
-    "vuex": "^3.0.1"
+    "vuex": "^3.6.2"
   },
   "eslintConfig": {
     "root": true,
@@ -28,7 +28,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
