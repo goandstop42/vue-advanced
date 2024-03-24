@@ -28,6 +28,8 @@ function fetchUser(id) {
 
 function fetchItem(id) {
   const url = `${api.item}${id}.json`;
+  // https://api.hnpwa.com/v0/item/39743483.json
+  console.log(url)
   return axios.get(url);
 }
 
