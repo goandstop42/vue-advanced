@@ -3,39 +3,29 @@ import {
   fetchJobsList,
   fetchAsk,
   fetchUser,
-  fetchItem
+  fetchItem,
+  fetchList
 } from "../api/index";
 
 export default {
-  FETCH_NEWS_LIST(context) {
-    return fetchNewsList()
-      .then(({ data }) => {
-        context.commit("SET_NEWS", data);
-      })
-      .catch(error => {
-        console.error("Error fetching news:", error);
-        throw error; // Throw error to be caught in the component
-      });
+  // promise
+  // async
+  async FETCH_NEWS_LIST(context) {
+    const response = await fetchNewsList;
+    context.commit("SET_NEWS", response.data);
+    return response;
   },
-  FETCH_JOBS_LIST({ commit }) {
-    return fetchJobsList()
-      .then(({ data }) => {
-        commit("SET_JOBS", data);
-      })
-      .catch(error => {
-        console.error("Error fetching jobs:", error);
-        throw error;
-      });
+
+  async FETCH_JOBS_LIST({ commit }) {
+    const response = await fetchJobsList();
+    commit("SET_JOBS", response.data);
+    return response;
   },
-  FETCH_ASK({ commit }) {
-    return fetchAsk()
-      .then(({ data }) => {
-        commit("SET_ASK", data);
-      })
-      .catch(error => {
-        console.error("Error fetching ask:", error);
-        throw error;
-      });
+
+  async FETCH_ASK({ commit }) {
+    const response = await fetchAsk();
+    commit("SET_ASK", response.data);
+    return response;
   },
   FETCH_USER({ commit }, username) {
     return fetchUser(username)
@@ -59,5 +49,10 @@ export default {
   },
   MODIFY_USER({ commit }) {
     commit("CLEAR_USER", []);
+  },
+  FETCH_LIST({ commit }, pageName) {
+    return fetchList(pageName)
+      .then(({ data }) => commit("SET_LIST", data))
+      .catch(error => console.log(error));
   }
 };

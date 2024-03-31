@@ -24,11 +24,9 @@
 <script>
 import {mapGetters} from "vuex";
 import UserProfile from '../components/UserProfile.vue'
-import NewsView from "./NewsView.vue";
 
 export default {
   components: {
-    NewsView,
     UserProfile
   },
   computed: {

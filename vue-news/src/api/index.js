@@ -1,13 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = {
-  news: 'https://api.hnpwa.com/v0/news/1.json',
-  ask: 'https://api.hnpwa.com/v0/ask/1.json',
-  jobs: 'https://api.hnpwa.com/v0/jobs/1.json',
-  user: 'https://api.hnpwa.com/v0/user/',
-  item: 'https://api.hnpwa.com/v0/item/'
+  news: "https://api.hnpwa.com/v0/news/1.json",
+  ask: "https://api.hnpwa.com/v0/ask/1.json",
+  jobs: "https://api.hnpwa.com/v0/jobs/1.json",
+  user: "https://api.hnpwa.com/v0/user/",
+  item: "https://api.hnpwa.com/v0/item/"
 };
-
+const config = {
+  baseUrl: "https://api.hnpwa.com/v0/"
+};
 
 function fetchNewsList() {
   return axios.get(api.news);
@@ -21,6 +23,10 @@ function fetchJobsList() {
   return axios.get(api.jobs);
 }
 
+function fetchList(pageName) {
+  return axios.get(`${config.baseUrl}${pageName}/1.json`);
+}
+
 function fetchUser(id) {
   const url = `${api.user}${id}.json`;
   return axios.get(url);
@@ -29,7 +35,6 @@ function fetchUser(id) {
 function fetchItem(id) {
   const url = `${api.item}${id}.json`;
   // https://api.hnpwa.com/v0/item/39743483.json
-  console.log(url)
   return axios.get(url);
 }
 
@@ -38,5 +43,6 @@ export {
   fetchAsk,
   fetchJobsList,
   fetchUser,
-  fetchItem
-}
+  fetchItem,
+  fetchList
+};
